@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+  mongodb:
+    container_name: database
+    image: mongo
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    volumes:
+      - "./docker_volume/mongodb:/data/db"
+    networks:
+      - privated
+
+  agenda:
+    depends_on:
+      - mongodb
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    networks:
+      - privated
+    deploy:
+      replicas: 3
+
+  web:
+    depends_on:
+      - mongodb
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: npm run web
+    ports:
+      - 8080:80
+    networks:
+      - privated
+
+networks:
+  privated:

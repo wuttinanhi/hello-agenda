@@ -1,0 +1,18 @@
+{
+  "name": "hello-agenda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "web": "node src/web.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "agenda": "^3.1.0",
+    "agendash2": "^0.8.2",
+    "express": "^4.17.1"
+  }
+}
